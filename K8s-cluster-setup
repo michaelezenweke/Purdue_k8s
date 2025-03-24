@@ -93,8 +93,11 @@ Next, configure containerd so that it starts using SystemdCgroup. Run beneath co
 $ containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
 $ sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 
+
+#Reload daemon: $sudo systemctl daemon-reload
 Restart containerd service so that above changes come into the affect.
 $ sudo systemctl restart containerd
+#Check status: $sudo systemctl status containerd.service
 
 4) Add Kubernetes Package Repository
 Kubernetes packages are not available in the default package repositories of Ubuntu 24.04, so for its installation first add it’s repository. Run these steps on each instance.
@@ -111,7 +114,9 @@ Install Kubernetes components like Kubeadm, kubelet and kubectl, run following a
 
 $ sudo apt update
 $ sudo apt install kubelet kubeadm kubectl -y
+#view installed packages: $sudo apt list --installed kubeadm kubelet kubectl
 $ sudo apt-mark hold kubeadm kubelet kubectl ( Prevent updating a package)
+#to list packages on hold: $sudo apt-mark showhold
 
 6) Initialize Kubernetes Cluster
 As all the prerequisites are met, now we are good to start the installation of Kubernetes on Ubuntu 24.04.
