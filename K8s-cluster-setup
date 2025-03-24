@@ -152,5 +152,5 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 Kubectl Bash Autocomplete
 
-$ echo 'source <(kubectl completion bash)' >>~/.bashrc
-$ . .bashrc
+$ echo 'source <(kubectl completion bash)' >> ~/.bashrc
+$ . ~/.bashrc
