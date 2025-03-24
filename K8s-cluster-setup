@@ -124,6 +124,8 @@ As all the prerequisites are met, now we are good to start the installation of K
 Run following Kubeadm command from the master node only to initialize the Kubernetes cluster.
 
 $ sudo kubeadm init --control-plane-endpoint=master.example.net --pod-network-cidr=192.168.0.0/16
+#in the command above, endpoint=name_of_master_node
+#to view nodes: $kubectl get nodes
 
 This command will pull the required images for your Kubernetes cluster. Once this command is executed successfully
 
@@ -143,6 +145,7 @@ $ sudo kubeadm join k8s-master-noble:6443 --token p3sdpk.zn0s060af0089ioa \
 To install calico network plugin, run beneath command from the master node only.
 
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+#Nodes are now in a ready state. To list all pods: $kubectl get pods -n kube-system
 
 Kubectl Bash Autocomplete
 
